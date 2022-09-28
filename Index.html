@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="./images/favicon-32x32.png" />
+    <link rel="stylesheet" href="flipclock.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Flip Countdown Timer</title>
+
+    <!-- stylesheet 👍 -->
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            --halfHeight: 0.72em;
+            --borderRadius: 8px;
+            height: 100vh;
+            background: hsl(235, 16%, 14%);
+            background-image: url('img/bg-stars.svg'), url('img/pattern-hills.svg');
+            background-position: center bottom, center bottom;
+            background-repeat: repeat, no-repeat;
+            padding: 15px;
+            color: white;
+            background-size: contain;
+            font-family: "Red Hat Text", sans-serif;
+            text-transform: uppercase;
+        }
+
+        .social {
+            display: flex;
+            left: 50%;
+            transform: translateX(-50%);
+            justify-content: center;
+            position: fixed;
+            bottom: 40px;
+        }
+
+            .social div {
+                margin: 0 35px;
+                transition: 0.5s;
+                cursor: pointer;
+                display: grid;
+                place-items: center;
+            }
+
+        .pin {
+            border-radius: 50%;
+        }
+
+        .insta {
+            border-radius: 12px;
+        }
+
+        .fb:hover {
+            background: rgb(3, 53, 192);
+        }
+
+        .pin:hover {
+            background: rgb(105, 2, 2);
+        }
+
+        .insta:hover {
+            background: linear-gradient(rgb(29, 1, 51), rgb(51, 1, 14));
+        }
+
+        .social div:hover {
+            transform: scale(1.5);
+        }
+
+        h3 {
+            margin-top: 90px;
+            display: grid;
+            place-items: center;
+            width: 100%;
+            height: 100px;
+            font-size: 20px;
+            letter-spacing: 8px;
+            text-align: center;
+        }
+
+        .clock {
+            margin-top: 90px;
+            width: 100%;
+            display: grid;
+            place-items: center;
+        }
+
+        @media screen and (max-width: 526px) {
+            body {
+                background-size: auto;
+                background-position: center bottom, -850px bottom;
+            }
+
+            h3 {
+                margin-top: 120px;
+            }
+
+            .clock {
+                margin-top: 20px;
+            }
+
+            .flip-clock__slot {
+                font-size: 12px;
+            }
+        }
+    </style>
+
+    <!-- Flipclock  👍 -->
+    <style>
+        .flip-clock {
+            text-align: center;
+            perspective: 400px;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        .flip-clock__piece {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .flip-clock__slot {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: hsl(237, 18%, 59%);
+            letter-spacing: 1px;
+        }
+
+        .flip::before,
+        .flip::after {
+            content: "";
+            position: absolute;
+            top: 48%;
+            left: -0%;
+            width: 5px;
+            height: 5px;
+            background: hsl(234, 17%, 12%);
+            border-radius: 0 100px 100px 0;
+            z-index: 9998;
+        }
+
+        .flip::after {
+            left: auto;
+            right: 0%;
+            border-radius: 100px 0 0 100px;
+            z-index: 12999;
+        }
+
+        .flip {
+            position: relative;
+        }
+
+        .card {
+            display: block;
+            position: relative;
+            padding-bottom: var(--halfHeight);
+            font-size: 42px;
+            line-height: 0.95;
+            box-shadow: 0px 18px 8px hsl(234, 17%, 12%);
+        }
+
+        .card__top,
+        .card__bottom,
+        .card__back::before,
+        .card__back::after {
+            display: block;
+            height: var(--halfHeight);
+            color: hsl(345, 95%, 68%);
+            background: hsl(236, 21%, 26%);
+            padding: 0.25em 0.25em;
+            border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            width: 1.8em;
+            transform: translateZ(0);
+        }
+
+        .card__bottom {
+            color: hsl(345, 95%, 68%);
+            position: absolute;
+            top: 50%;
+            left: 0;
+            border-top: solid 2px rgba(25, 26, 36, 0.281);
+            background: hsl(236, 21%, 26%);
+            border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+            .card__bottom::after {
+                display: block;
+                margin-top: calc(var(--halfHeight) * -1);
+            }
+
+            .card__back::before,
+            .card__bottom::after {
+                content: attr(data-value);
+            }
+
+        .card__back {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            left: 0%;
+            pointer-events: none;
+        }
+
+            .card__back::before {
+                position: relative;
+                z-index: -1;
+                overflow: hidden;
+            }
+
+        .flip .card__back::before {
+            animation: flipTop 0.3s cubic-bezier(0.37, 0.01, 0.94, 0.35);
+            animation-fill-mode: both;
+            transform-origin: center bottom;
+        }
+
+        .flip .card__back .card__bottom {
+            transform-origin: center top;
+            animation-fill-mode: both;
+            animation: flipBottom 0.6s cubic-bezier(0.15, 0.45, 0.28, 1);
+        }
+
+        @keyframes flipTop {
+            0% {
+                transform: rotateX(0deg);
+                z-index: 2;
+            }
+
+            0%, 99% {
+                opacity: 0.99;
+            }
+
+            100% {
+                transform: rotateX(-90deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes flipBottom {
+            0%, 50% {
+                z-index: -1;
+                transform: rotateX(90deg);
+                opacity: 0;
+            }
+
+            51% {
+                opacity: 0.99;
+            }
+
+            100% {
+                opacity: 0.99;
+                transform: rotateX(0deg);
+                z-index: 5;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .card {
+                font-size: 72px;
+            }
+
+            .flip::before,
+            .flip::after {
+                top: 46%;
+                width: 8px;
+                height: 10px;
+            }
+
+            .flip-clock__slot {
+                letter-spacing: 7px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Timer JS  -->
+    <h3>Flip <br />Countdown <br />Timer</h3>
+
+    <div class="clock"></div>
+    <div class="social">
+        <div class="fb">
+            <img src="img/icon-facebook.svg" alt="fb" />
+        </div>
+        <div class="pin">
+            <img src="img/icon-pinterest.svg" alt="pin" />
+        </div>
+        <div class="insta">
+            <img src="img/icon-instagram.svg" alt="insta" />
+        </div>
+    </div>
+
+    <!-- Timer JS 👍 -->
+    <script>
+        console.clear();
+        console.log("Visit here to get original code");
+        console.log("https://codepen.io/shshaw/pen/vKzoLL");
+        console.log("Thanks to Shaw");
+
+        function CountdownTracker(label, value) {
+            var el = document.createElement("span");
+
+            el.className = "flip-clock__piece";
+            el.innerHTML =
+                '<b class="flip-clock__card card"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' +
+                '<span class="flip-clock__slot">' +
+                label +
+                "</span>";
+
+            this.el = el;
+
+            var top = el.querySelector(".card__top"),
+                bottom = el.querySelector(".card__bottom"),
+                back = el.querySelector(".card__back"),
+                backBottom = el.querySelector(".card__back .card__bottom");
+
+            this.update = function (val) {
+                val = ("0" + val).slice(-2);
+                if (val !== this.currentValue) {
+                    if (this.currentValue >= 0) {
+                        back.setAttribute("data-value", this.currentValue);
+                        bottom.setAttribute("data-value", this.currentValue);
+                    }
+                    this.currentValue = val;
+                    top.innerText = this.currentValue;
+                    backBottom.setAttribute("data-value", this.currentValue);
+
+                    this.el.classList.remove("flip");
+                    void this.el.offsetWidth;
+                    this.el.classList.add("flip");
+                }
+            };
+
+            this.update(value);
+        }
+
+        // Calculation adapted from https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            return {
+                Total: t,
+
+                Minutes: Math.floor((t / 1000 / 55) % 60),
+                Seconds: Math.floor((t / 1000) % 60),
+            };
+        }
+
+        function getTime() {
+            var t = new Date();
+            return {
+                Total: t,
+                Hours: t.getHours() % 12,
+                Minutes: t.getMinutes(),
+                Seconds: t.getSeconds(),
+            };
+        }
+
+        function Clock(countdown, callback) {
+            countdown = countdown ? new Date(Date.parse(countdown)) : false;
+            callback = callback || function () { };
+
+            var updateFn = countdown ? getTimeRemaining : getTime;
+
+            this.el = document.createElement("div");
+            this.el.className = "flip-clock";
+
+            var trackers = {},
+                t = updateFn(countdown),
+                key,
+                timeinterval;
+
+            for (key in t) {
+                if (key === "Total") {
+                    continue;
+                }
+                trackers[key] = new CountdownTracker(key, t[key]);
+                this.el.appendChild(trackers[key].el);
+            }
+
+            var i = 0;
+            function updateClock() {
+                timeinterval = requestAnimationFrame(updateClock);
+
+                // throttle so it's not constantly updating the time.
+                if (i++ % 10) {
+                    return;
+                }
+
+                var t = updateFn(countdown);
+                if (t.Total < 0) {
+                    cancelAnimationFrame(timeinterval);
+                    for (key in trackers) {
+                        trackers[key].update(0);
+                    }
+                    callback();
+                    return;
+                }
+
+                for (key in trackers) {
+                    trackers[key].update(t[key]);
+                }
+            }
+
+            setTimeout(updateClock, 500);
+        }
+
+        var deadline = new Date(Date.parse(new Date()) + 9 * 24 * 60 * 60 * 1000);
+        var c = new Clock(deadline, function () {
+            alert("countdown complete");
+        });
+        document.querySelector(".clock").appendChild(c.el);
+
+
+    </script>
+
+</body>
+
+</html>
