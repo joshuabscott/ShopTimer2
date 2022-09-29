@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>Flip Countdown Timer</title>
 
-    <!-- stylesheet 👍 -->
+    <!-- Stylesheet 👍 -->
     <style>
 
         @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
@@ -30,19 +30,23 @@
             margin: 0;
             --halfHeight: 0.72em;
             --borderRadius: 8px;
-            height: 100vh;
-            background: HSL(0, 0%, 0%);
-            background-image: url("./images/bg-stars.svg"), url("./images/pattern-hills.svg");
+            /*height: 100vh;*/
+
+            /*background-color WHITE*/
+            background: hsl(0, 100%, 100%);
+
+            /*background-image: url("./images/bg-stars.svg"), url("./images/pattern-hills.svg");
             background-position: center bottom, center bottom;
-            background-repeat: repeat, no-repeat;
+            background-repeat: repeat, no-repeat;*/
             padding: 15px;
-            color: white;
+            /*Text-color*/
+            color: hsl(0, 0%, 0%);
             background-size: contain;
             font-family: "Red Hat Text", sans-serif;
             text-transform: uppercase;
         }
 
-        .social {
+       /* .social {
             display: flex;
             left: 50%;
             transform: translateX(-50%);
@@ -57,9 +61,9 @@
                 cursor: pointer;
                 display: grid;
                 place-items: center;
-            }
+            }*/
 
-        .pin {
+        /*.pin {
             border-radius: 50%;
         }
 
@@ -81,7 +85,7 @@
 
         .social div:hover {
             transform: scale(1.5);
-        }
+        }*/
 
         h3 {
             margin-top: 90px;
@@ -139,7 +143,9 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 14px;
-            color: hsl(237, 18%, 59%);
+
+            /*color: hsl(24 100% 50%);*/
+
             letter-spacing: 1px;
         }
 
@@ -151,7 +157,9 @@
             left: -0%;
             width: 5px;
             height: 5px;
-            background: hsl(234, 17%, 12%);
+
+            /*background: hsl(24 100% 50%);*/
+
             border-radius: 0 100px 100px 0;
             z-index: 9998;
         }
@@ -182,9 +190,9 @@
         .card__back::after {
             display: block;
             height: var(--halfHeight);
+            /*color: hsl(24 100% 50%);*/
 
-            color: hsl(345, 95%, 68%);
-            background: hsl(236, 21%, 26%);
+           /* background: hsl(24 100% 50%);*/
 
             padding: 0.25em 0.25em;
             border-radius: var(--borderRadius) var(--borderRadius) 0 0;
@@ -195,14 +203,17 @@
         }
 
         .card__bottom {
+           /* color: hsl(24 100% 50%);*/
 
-            color: hsl(345, 95%, 68%);
             position: absolute;
             top: 50%;
             left: 0;
+
+            /* background*/
             border-top: solid 2px rgba(25, 26, 36, 0.281);
 
-            background: hsl(236, 21%, 26%);
+            /*background: hsl(24 100% 50%);*/
+
             border-radius: 0 0 var(--borderRadius) var(--borderRadius);
             pointer-events: none;
             overflow: hidden;
@@ -318,7 +329,9 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 14px;
-            color: hsl(237, 18%, 59%);
+
+            /*bottom text*/
+            color: hsl(0, 0%, 0%);
             letter-spacing: 1px;
         }
 
@@ -330,8 +343,9 @@
             left: -0%;
             width: 5px;
             height: 5px;
-            /*edges of the flip card*/
-            background: hsl(234, 17%, 12%);
+
+            /*edges of the flip card side WHITE*/
+            background: hsl(0, 100%, 100%);
             border-radius: 0 100px 100px 0;
             z-index: 9998;
         }
@@ -362,10 +376,13 @@
         .card__back::after {
             display: block;
             height: var(--halfHeight);
-            /*Top of number color*/
-            color: greenyellow;
-            /*Top of background color*/
+
+            /*Top of number color WHITE*/
+            color: hsl(0, 100%, 100%);
+
+            /*Top of background color BLUE*/
             background: hsl(192, 100%, 50%);
+
             padding: 0.25em 0.25em;
             border-radius: var(--borderRadius) var(--borderRadius) 0 0;
             backface-visibility: hidden;
@@ -375,14 +392,17 @@
         }
 
         .card__bottom {
-            /*Bottom of number color*/
-            color: greenyellow;
+            /*Bottom of number color WHITE*/
+            color: hsl(0, 100%, 100%);
+
             position: absolute;
             top: 50%;
             left: 0;
             border-top: solid 2px rgba(25, 26, 36, 0.281);
-            /*Bottom of background color*/
+
+            /*Bottom of background color BLUE*/
             background: hsl(192, 100%, 50%);
+
             border-radius: 0 0 var(--borderRadius) var(--borderRadius);
             pointer-events: none;
             overflow: hidden;
@@ -477,13 +497,17 @@
     </style>
 
 </head>
+
 <body>
-
-    <!-- Timer JS  -->
+    <!-- Title  -->
     <h3>Flip <br />Countdown <br />Timer</h3>
-    <div class="clock"></div>
 
-    <!--<div class="social">
+    <div>
+
+        <!-- The Timer  -->
+        <div class="clock"></div>
+
+        <!--<div class="social">
         <div class="fb">
             <img src="img/icon-facebook.svg" alt="fb" />
         </div>
@@ -493,132 +517,134 @@
         <div class="insta">
             <img src="img/icon-instagram.svg" alt="insta" />
         </div>
-    </div>-->
+        </div>-->
+        <!-- Timer JS 👍 -->
+        <script>
+            console.clear();
+            console.log("Visit here to get original code");
+            console.log("https://codepen.io/shshaw/pen/vKzoLL");
+            console.log("Thanks to Shaw");
 
-    <!-- Timer JS 👍 -->
-    <script>
-        console.clear();
-        console.log("Visit here to get original code");
-        console.log("https://codepen.io/shshaw/pen/vKzoLL");
-        console.log("Thanks to Shaw");
+            function CountdownTracker(label, value) {
+                var el = document.createElement("span");
 
-        function CountdownTracker(label, value) {
-            var el = document.createElement("span");
+                el.className = "flip-clock__piece";
+                el.innerHTML =
+                    '<b class="flip-clock__card card"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' +
+                    '<span class="flip-clock__slot">' +
+                    label +
+                    "</span>";
 
-            el.className = "flip-clock__piece";
-            el.innerHTML =
-                '<b class="flip-clock__card card"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' +
-                '<span class="flip-clock__slot">' +
-                label +
-                "</span>";
+                this.el = el;
 
-            this.el = el;
+                var top = el.querySelector(".card__top"),
+                    bottom = el.querySelector(".card__bottom"),
+                    back = el.querySelector(".card__back"),
+                    backBottom = el.querySelector(".card__back .card__bottom");
 
-            var top = el.querySelector(".card__top"),
-                bottom = el.querySelector(".card__bottom"),
-                back = el.querySelector(".card__back"),
-                backBottom = el.querySelector(".card__back .card__bottom");
+                this.update = function (val) {
+                    val = ("0" + val).slice(-2);
+                    if (val !== this.currentValue) {
+                        if (this.currentValue >= 0) {
+                            back.setAttribute("data-value", this.currentValue);
+                            bottom.setAttribute("data-value", this.currentValue);
+                        }
+                        this.currentValue = val;
+                        top.innerText = this.currentValue;
+                        backBottom.setAttribute("data-value", this.currentValue);
 
-            this.update = function (val) {
-                val = ("0" + val).slice(-2);
-                if (val !== this.currentValue) {
-                    if (this.currentValue >= 0) {
-                        back.setAttribute("data-value", this.currentValue);
-                        bottom.setAttribute("data-value", this.currentValue);
+                        this.el.classList.remove("flip");
+                        void this.el.offsetWidth;
+                        this.el.classList.add("flip");
                     }
-                    this.currentValue = val;
-                    top.innerText = this.currentValue;
-                    backBottom.setAttribute("data-value", this.currentValue);
+                };
 
-                    this.el.classList.remove("flip");
-                    void this.el.offsetWidth;
-                    this.el.classList.add("flip");
-                }
-            };
-
-            this.update(value);
-        }
-
-        // Calculation adapted from https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
-
-        function getTimeRemaining(endtime) {
-            var t = Date.parse(endtime) - Date.parse(new Date());
-            return {
-                Total: t,
-
-                Minutes: Math.floor((t / 1000 / 55) % 60),
-                Seconds: Math.floor((t / 1000) % 60),
-            };
-        }
-
-        function getTime() {
-            var t = new Date();
-            return {
-                Total: t,
-                Hours: t.getHours() % 12,
-                Minutes: t.getMinutes(),
-                Seconds: t.getSeconds(),
-            };
-        }
-
-        function Clock(countdown, callback) {
-            countdown = countdown ? new Date(Date.parse(countdown)) : false;
-            callback = callback || function () { };
-
-            var updateFn = countdown ? getTimeRemaining : getTime;
-
-            this.el = document.createElement("div");
-            this.el.className = "flip-clock";
-
-            var trackers = {},
-                t = updateFn(countdown),
-                key,
-                timeinterval;
-
-            for (key in t) {
-                if (key === "Total") {
-                    continue;
-                }
-                trackers[key] = new CountdownTracker(key, t[key]);
-                this.el.appendChild(trackers[key].el);
+                this.update(value);
             }
 
-            var i = 0;
-            function updateClock() {
-                timeinterval = requestAnimationFrame(updateClock);
+            // Calculation adapted from https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 
-                // throttle so it's not constantly updating the time.
-                if (i++ % 10) {
-                    return;
+            function getTimeRemaining(endtime) {
+                var t = Date.parse(endtime) - Date.parse(new Date());
+                return {
+                    Total: t,
+                    Minutes: Math.floor((t / 1000 / 52) % 60),
+                    Seconds: Math.floor((t / 1000) % 60),
+                };
+            }
+
+            //function getTime() {
+            //    var t = new Date();
+            //    return {
+            //        Total: t,
+            //        Hours: t.getHours() % 12,
+            //        Minutes: t.getMinutes(),
+            //        Seconds: t.getSeconds(),
+            //    };
+            //}
+
+            function Clock(countdown, callback) {
+                countdown = countdown ? new Date(Date.parse(countdown)) : false;
+                callback = callback || function () { };
+
+                var updateFn = countdown ? getTimeRemaining : getTime;
+
+                this.el = document.createElement("div");
+                this.el.className = "flip-clock";
+
+                var trackers = {},
+                    t = updateFn(countdown),
+                    key,
+                    timeinterval;
+
+                for (key in t) {
+                    if (key === "Total") {
+                        continue;
+                    }
+                    trackers[key] = new CountdownTracker(key, t[key]);
+                    this.el.appendChild(trackers[key].el);
                 }
 
-                var t = updateFn(countdown);
-                if (t.Total < 0) {
-                    cancelAnimationFrame(timeinterval);
+                var i = 0;
+                function updateClock() {
+                    timeinterval = requestAnimationFrame(updateClock);
+
+                    // throttle so it's not constantly updating the time.
+                    if (i++ % 10) {
+                        return;
+                    }
+
+                    var t = updateFn(countdown);
+                    if (t.Total < 0) {
+                        cancelAnimationFrame(timeinterval);
+                        for (key in trackers) {
+                            trackers[key].update(0);
+                        }
+                        callback();
+                        return;
+                    }
+
                     for (key in trackers) {
-                        trackers[key].update(0);
+                        trackers[key].update(t[key]);
                     }
-                    callback();
-                    return;
                 }
 
-                for (key in trackers) {
-                    trackers[key].update(t[key]);
-                }
+                setTimeout(updateClock, 500);
             }
 
-            setTimeout(updateClock, 500);
-        }
-
-        var deadline = new Date(Date.parse(new Date()) + 9 * 24 * 60 * 60 * 1000);
-        var c = new Clock(deadline, function () {
-            alert("countdown complete");
-        });
-        document.querySelector(".clock").appendChild(c.el);
+            var deadline = new Date(Date.parse(new Date()) + 9 * 24 * 60 * 60 * 1000);
+            var c = new Clock(deadline, function () {
+                alert("countdown complete");
+            });
+            document.querySelector(".clock").appendChild(c.el);
 
 
-    </script>
+        </script>
+    </div>
 
+    <footer>
+
+    </footer>
 </body>
 
 </html>
