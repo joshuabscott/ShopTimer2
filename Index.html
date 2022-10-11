@@ -13,10 +13,12 @@
     <link rel="stylesheet" href="style.css" />
     <title>Flip Countdown Timer</title>
 
-    <!-- Stylesheet 👍 -->
-    <style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-        @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
+    <!-- Style sheet  -->
+    <style>
 
         *,
         *::before,
@@ -31,10 +33,8 @@
             --halfHeight: 0.72em;
             --borderRadius: 8px;
             /*height: 100vh;*/
-
             /*background-color WHITE*/
             background: hsl(0, 100%, 100%);
-
             /*background-image: url("./images/bg-stars.svg"), url("./images/pattern-hills.svg");
             background-position: center bottom, center bottom;
             background-repeat: repeat, no-repeat;*/
@@ -46,7 +46,7 @@
             text-transform: uppercase;
         }
 
-       /* .social {
+        /* .social {
             display: flex;
             left: 50%;
             transform: translateX(-50%);
@@ -143,7 +143,6 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 14px;
-
             /*color: hsl(24 100% 50%);*/
 
             letter-spacing: 1px;
@@ -157,7 +156,6 @@
             left: -0%;
             width: 5px;
             height: 5px;
-
             /*background: hsl(24 100% 50%);*/
 
             border-radius: 0 100px 100px 0;
@@ -175,7 +173,7 @@
             position: relative;
         }
 
-        .card {
+        .card-timer {
             display: block;
             position: relative;
             padding-bottom: var(--halfHeight);
@@ -191,8 +189,7 @@
             display: block;
             height: var(--halfHeight);
             /*color: hsl(24 100% 50%);*/
-
-           /* background: hsl(24 100% 50%);*/
+            /* background: hsl(24 100% 50%);*/
 
             padding: 0.25em 0.25em;
             border-radius: var(--borderRadius) var(--borderRadius) 0 0;
@@ -203,15 +200,13 @@
         }
 
         .card__bottom {
-           /* color: hsl(24 100% 50%);*/
+            /* color: hsl(24 100% 50%);*/
 
             position: absolute;
             top: 50%;
             left: 0;
-
             /* background*/
             border-top: solid 2px rgba(25, 26, 36, 0.281);
-
             /*background: hsl(24 100% 50%);*/
 
             border-radius: 0 0 var(--borderRadius) var(--borderRadius);
@@ -290,7 +285,7 @@
         }
 
         @media screen and (min-width: 768px) {
-            .card {
+            .card-timer {
                 font-size: 72px;
             }
 
@@ -305,11 +300,9 @@
                 letter-spacing: 7px;
             }
         }
-
-
     </style>
 
-    <!-- Flipclock  👍 -->
+    <!-- Flip clock  -->
     <style>
         .flip-clock {
             text-align: center;
@@ -329,7 +322,6 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 14px;
-
             /*bottom text*/
             color: hsl(0, 0%, 0%);
             letter-spacing: 1px;
@@ -343,7 +335,6 @@
             left: -0%;
             width: 5px;
             height: 5px;
-
             /*edges of the flip card side WHITE*/
             background: hsl(0, 100%, 100%);
             border-radius: 0 100px 100px 0;
@@ -361,7 +352,7 @@
             position: relative;
         }
 
-        .card {
+        .card-timer {
             display: block;
             position: relative;
             padding-bottom: var(--halfHeight);
@@ -376,13 +367,10 @@
         .card__back::after {
             display: block;
             height: var(--halfHeight);
-
             /*Top of number color WHITE*/
             color: hsl(0, 100%, 100%);
-
             /*Top of background color BLUE*/
             background: hsl(192, 100%, 50%);
-
             padding: 0.25em 0.25em;
             border-radius: var(--borderRadius) var(--borderRadius) 0 0;
             backface-visibility: hidden;
@@ -394,15 +382,12 @@
         .card__bottom {
             /*Bottom of number color WHITE*/
             color: hsl(0, 100%, 100%);
-
             position: absolute;
             top: 50%;
             left: 0;
             border-top: solid 2px rgba(25, 26, 36, 0.281);
-
             /*Bottom of background color BLUE*/
             background: hsl(192, 100%, 50%);
-
             border-radius: 0 0 var(--borderRadius) var(--borderRadius);
             pointer-events: none;
             overflow: hidden;
@@ -479,7 +464,7 @@
         }
 
         @media screen and (min-width: 768px) {
-            .card {
+            .card-timer {
                 font-size: 72px;
             }
 
@@ -503,34 +488,31 @@
     <h3>Flip <br />Countdown <br />Timer</h3>
 
     <div>
-
         <!-- The Timer  -->
-        <div class="clock"></div>
+        <div class="container col-12 col-md-12 col-lg-12">
+            <div class="row col-12 col-md-12 col-lg-12">
+                
+                <div class="clock"></div>
+               
+            </div>
+        </div>
+    </div>
 
-        <!--<div class="social">
-        <div class="fb">
-            <img src="img/icon-facebook.svg" alt="fb" />
-        </div>
-        <div class="pin">
-            <img src="img/icon-pinterest.svg" alt="pin" />
-        </div>
-        <div class="insta">
-            <img src="img/icon-instagram.svg" alt="insta" />
-        </div>
-        </div>-->
-        <!-- Timer JS 👍 -->
+    <footer>
+        <!-- Timer JS  -->
         <script>
             console.clear();
-            console.log("Visit here to get original code");
-            console.log("https://codepen.io/shshaw/pen/vKzoLL");
-            console.log("Thanks to Shaw");
+            console.log("Visit here to get open source code");
+            console.log("https://github.com/joshuabscott/ShopTimer2");
+            console.log("https://flipcountdown.netlify.app/");
+            console.log("Thanks to Coder Foundry and TPA");
 
             function CountdownTracker(label, value) {
                 var el = document.createElement("span");
 
                 el.className = "flip-clock__piece";
                 el.innerHTML =
-                    '<b class="flip-clock__card card"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' +
+                    '<b class="flip-clock__card card-timer"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' +
                     '<span class="flip-clock__slot">' +
                     label +
                     "</span>";
@@ -572,16 +554,6 @@
                     Seconds: Math.floor((t / 1000) % 60),
                 };
             }
-
-            //function getTime() {
-            //    var t = new Date();
-            //    return {
-            //        Total: t,
-            //        Hours: t.getHours() % 12,
-            //        Minutes: t.getMinutes(),
-            //        Seconds: t.getSeconds(),
-            //    };
-            //}
 
             function Clock(countdown, callback) {
                 countdown = countdown ? new Date(Date.parse(countdown)) : false;
@@ -640,11 +612,11 @@
 
 
         </script>
-    </div>
-
-    <footer>
-
     </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
